@@ -1,14 +1,9 @@
-<style>
-.square-radio:checked + label {
-  background: #f8f9ff;
-  border-radius: 8px;
-  border: 0.5px #483eff solid;
-}
-</style>
-
 <template>
-  <div class="flex flex-col ml-20">
-    <div class="mt-10 flex justify-center">
+  <div
+    class="flex flex-col bg-white sm:bg-inherit p-5 rounded-[10px] shadow sm:p-0 sm:rounded-none sm:shadow-inherit"
+  >
+    <hero :title="title" />
+    <div class="flex flex-col justify-center sm:flex-row">
       <div v-for="item in Plan" :key="item.id">
         <div>
           <input
@@ -19,7 +14,8 @@
           />
           <label
             :for="item.id"
-            class="w-[138px] h-40 bg-white rounded-lg border border-gray-300 ml-4 p-4 flex flex-col justify-between"
+            class="w-[90%] h-auto bg-white rounded-lg border border-gray-300 p-4 flex flex-row gap-5 my-2 items-center sm:m-0 sm:gap-0 sm:h-40 sm:w-[138px] sm:flex-col sm:justify-between sm:items-start"
+            :class="{ 'sm:ml-4': item.id != 'option1' }"
           >
             <img
               src="../assets/images/icon-arcade.svg"
@@ -41,7 +37,7 @@
     </div>
 
     <div
-      class="ml-4 mt-8 w-[96%] h-12 bg-slate-50 rounded-lg flex justify-center items-center"
+      class="mt-4 sm:mt-8 w-[90%] sm:w-full h-12 bg-slate-50 rounded-lg flex justify-center items-center"
     >
       <p
         class="text-right text-gray-400 text-sm font-medium"
@@ -63,8 +59,25 @@
   </div>
 </template>
 
+<style>
+.square-radio:checked + label {
+  background: #f8f9ff;
+  border-radius: 8px;
+  border: 0.5px #483eff solid;
+}
+
+label:hover {
+  border: 0.5px #483eff solid;
+}
+</style>
+
 <script setup>
 import { ref } from "vue";
+import hero from "./Hero.vue";
+const title = {
+  titleHeading: "Select your plan",
+  titleParagraph: "You have the option of monthly or yearly billing.",
+};
 const buttonBoolean = ref(true);
 const Plan = [
   {

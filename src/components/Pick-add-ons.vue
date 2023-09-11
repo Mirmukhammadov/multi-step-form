@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-col ml-20">
+  <div class="flex flex-col">
+    <hero :title="title" />
     <div v-for="item in pickValues" :key="item.id" class="mb-5">
       <input
         type="checkbox"
@@ -48,7 +49,11 @@
 
 <script setup>
 import { ref } from "vue";
-
+import hero from "./Hero.vue";
+const title = {
+  titleHeading: "Pick add-ons",
+  titleParagraph: "Add-ons help enhance your gaming experience.",
+};
 const pickValues = [
   {
     id: "option1",
