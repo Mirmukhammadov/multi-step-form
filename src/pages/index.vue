@@ -5,18 +5,26 @@
     <div
       class="container sm:bg-white sm:p-5 flex flex-col justify-between sm:flex-row lg:justify-start"
     >
-      <sidebar class="z-0 absolute sm:relative top-0 left-0" />
+      <sidebar class="z-0 absolute sm:relative top-0 left-0" :id="pageId" />
       <div
         class="flex flex-col justify-between lg:ml-[100px] sm:ml-10 sm:mt-[25px] mt-[90px]"
       >
-        <PersonalInfo class="sm:z-0 back-color z-10" ref="childRef" />
-        <!-- <Plan class="sm:z-0 z-10" /> -->
-        <!-- <PickAddOns /> -->
-        <div class="flex items-center sm:bg-inherit bg-white p-2 rounded">
-          <button class="text-gray-400 text-base font-medium">Go Back</button>
+        <PersonalInfo class="sm:z-0 back-color z-10" v-if="pageId == 1" />
+        <Plan class="sm:z-0 z-10" v-else-if="pageId == 2" />
+        <PickAddOns class="sm:z-0 z-10" v-else-if="pageId == 3" />
+        <div
+          class="flex items-center sm:bg-inherit bg-white p-1 rounded w-full absolute bottom-0 left-0 sm:relative"
+        >
           <button
+            class="text-gray-400 text-base font-medium"
+            @click="pageId--"
+            v-if="pageId > 1"
+          >
+            Go Back
+          </button>
+          <button
+            @click="pageId++"
             class="bg-sky-950 rounded-lg text-white text-base font-medium px-3 py-2 ml-auto mr-0"
-            @click="childbutton"
           >
             Next Step
           </button>
@@ -47,4 +55,8 @@ import sidebar from "../components/sidebar.vue";
 import PersonalInfo from "../components/PersonalInfo.vue";
 import Plan from "../components/Plan.vue";
 import PickAddOns from "../components/Pick-add-ons.vue";
+
+const toggle = ref(false);
+
+const pageId = ref(1);
 </script>

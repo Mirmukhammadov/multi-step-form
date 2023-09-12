@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-col">
+  <div
+    class="flex flex-col sm:bg-inherit bg-white p-5 rounded-[10px] shadow sm:p-0 sm:rounded-none sm:shadow-inherit"
+  >
     <hero :title="title" />
     <div v-for="item in pickValues" :key="item.id" class="mb-5">
       <input
@@ -10,7 +12,7 @@
       />
       <label
         :for="item.id"
-        class="w-[450px] h-20 p-5 flex rounded-lg border"
+        class="max-w-[450px] w-full h-20 p-5 flex rounded-lg border"
         :class="{ label: item.boolean.value }"
       >
         <span

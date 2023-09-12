@@ -6,7 +6,11 @@
       <div v-for="item in sidebarValue" :key="item">
         <div class="mt-8 px-7 flex">
           <span
-            class="w-[33px] h-[33px] text-center py-1.5 text-white text-sm font-bold uppercase tracking-wide rounded-full border border-white duration-300 hover:bg-sky-200 hover:text-black"
+            class="w-[33px] h-[33px] text-center py-1.5 text-white text-sm font-bold uppercase tracking-wide rounded-full border border-white duration-300"
+            :class="{
+              'bg-sky-200': item.id == id,
+              'text-black': item.id == id,
+            }"
             >{{ item.id }}</span
           >
           <div class="ml-4 sm:block hidden">
@@ -19,6 +23,7 @@
       </div>
     </div>
   </div>
+  <pre>{{ id }}</pre>
 </template>
 
 <style>
@@ -42,7 +47,8 @@
 </style>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
+const props = defineProps(["id"]);
 const sidebarValue = [
   {
     id: 1,
