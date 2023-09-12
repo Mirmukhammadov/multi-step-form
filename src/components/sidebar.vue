@@ -23,7 +23,6 @@
       </div>
     </div>
   </div>
-  <pre>{{ id }}</pre>
 </template>
 
 <style>

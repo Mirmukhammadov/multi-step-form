@@ -3,13 +3,19 @@
     class="bg-[#EFF5FF] w-screen h-screen px-3 flex flex-col items-center sm:justify-center relative"
   >
     <div
-      class="container sm:bg-white sm:p-5 flex flex-col justify-between sm:flex-row lg:justify-start"
+      class="container sm:bg-white sm:p-5 flex flex-col sm:flex-row sm:justify-start"
     >
-      <sidebar class="z-0 absolute sm:relative top-0 left-0" :id="pageId" />
+      <sidebar
+        class="z-0 absolute sm:relative sm:mt-5 md:mt-0 top-0 left-0"
+        :id="pageId"
+      />
       <div
-        class="flex flex-col justify-between lg:ml-[100px] sm:ml-10 sm:mt-[25px] mt-[90px]"
+        class="flex flex-col justify-between sm:ml-10 sm:mt-[25px] mt-[90px]"
       >
-        <PersonalInfo class="sm:z-0 back-color z-10" v-if="pageId == 1" />
+        <PersonalInfo
+          class="sm:z-0 back-color z-10 lg:ml-[100px] md:ml-[50px]"
+          v-if="pageId == 1"
+        />
         <Plan class="sm:z-0 z-10" v-else-if="pageId == 2" />
         <PickAddOns class="sm:z-0 z-10" v-else-if="pageId == 3" />
         <div

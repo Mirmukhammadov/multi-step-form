@@ -3,7 +3,7 @@
     class="flex flex-col bg-white sm:bg-inherit p-5 rounded-[10px] shadow sm:p-0 sm:rounded-none sm:shadow-inherit"
   >
     <hero :title="title" />
-    <div class="flex flex-col justify-center sm:flex-row">
+    <div class="flex flex-col justify-center sm:flex-row flex-wrap">
       <div v-for="item in Plan" :key="item.id">
         <div>
           <input
@@ -14,8 +14,7 @@
           />
           <label
             :for="item.id"
-            class="w-[90%] h-auto bg-white rounded-lg border border-gray-300 p-4 flex flex-row gap-5 my-2 items-center sm:m-0 sm:gap-0 sm:h-40 sm:w-[138px] sm:flex-col sm:justify-between sm:items-start"
-            :class="{ 'sm:ml-4': item.id != 'option1' }"
+            class="w-[90%] h-auto bg-white rounded-lg border border-gray-300 p-4 flex flex-row gap-5 my-2 items-center sm:m-1 sm:gap-3 sm:h-40 sm:w-[138px] sm:flex-col sm:justify-between sm:items-start"
           >
             <img
               src="../assets/images/icon-arcade.svg"
@@ -69,6 +68,12 @@
 label:hover {
   border: 0.5px #483eff solid;
 }
+
+/* @media only screen and (max-width: 680px) {
+  .div {
+    flex-wrap: nowrap !important;
+  }
+} */
 </style>
 
 <script setup>
