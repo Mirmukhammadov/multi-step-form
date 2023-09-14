@@ -2,7 +2,7 @@
   <div
     class="flex flex-col bg-white sm:bg-inherit p-5 rounded-[10px] shadow sm:p-0 sm:rounded-none sm:shadow-inherit"
   >
-    <hero :title="title" />
+    <Hero :title="title" />
     <div class="flex flex-col justify-center sm:flex-row flex-wrap">
       <div v-for="item in Plan" :key="item.id">
         <div>
@@ -11,8 +11,11 @@
             class="square-radio hidden"
             :id="item.id"
             name="options"
+            v-model="selectedOption"
+            :value="item.id"
           />
           <label
+            @click="$emit('getLabelValue', item)"
             :for="item.id"
             class="w-[90%] h-auto bg-white rounded-lg border border-gray-300 p-4 flex flex-row gap-5 my-2 items-center sm:m-1 sm:gap-3 sm:h-40 sm:w-[138px] sm:flex-col sm:justify-between sm:items-start"
           >
@@ -23,11 +26,18 @@
             />
             <div class="text-left">
               <p class="text-sky-950 text-base font-medium">{{ item.name }}</p>
-              <span class="text-gray-400 text-sm font-normal">{{
-                item.price
-              }}</span>
+              <span
+                class="text-gray-400 text-sm font-normal"
+                v-if="!buttonBoolean"
+                >{{ item.price }}</span
+              >
+              <span
+                class="text-gray-400 text-sm font-normal"
+                v-if="buttonBoolean"
+                >{{ item.yearlyPrice }}</span
+              >
               <p class="text-sky-950 text-xs font-normal" v-if="buttonBoolean">
-                {{ item.yearlyPrice }}
+                {{ item.yearlyPriceBonus }}
               </p>
             </div>
           </label>
@@ -44,7 +54,7 @@
       >
         Monthly
       </p>
-      <button class="px-6" @click="buttonBoolean = !buttonBoolean">
+      <button class="px-6" @click="handleButtonClick">
         <img src="../assets/images/left.png" alt="" v-if="!buttonBoolean" />
         <img src="../assets/images/right.png" alt="" v-else />
       </button>
@@ -68,43 +78,45 @@
 label:hover {
   border: 0.5px #483eff solid;
 }
-
-/* @media only screen and (max-width: 680px) {
-  .div {
-    flex-wrap: nowrap !important;
-  }
-} */
 </style>
 
 <script setup>
-import { ref } from "vue";
-import hero from "./Hero.vue";
+import { ref, defineEmits } from "vue";
+import Hero from "./Hero.vue";
 const title = {
   titleHeading: "Select your plan",
   titleParagraph: "You have the option of monthly or yearly billing.",
 };
-const buttonBoolean = ref(true);
+const buttonBoolean = ref(false);
+const emit = defineEmits(["buttonBoolean"]);
+function handleButtonClick() {
+  buttonBoolean.value = !buttonBoolean.value;
+  emit("buttonBoolean", buttonBoolean.value);
+}
 const Plan = [
   {
     id: "option1",
     img: "../assets/images/icon-arcade.svg",
     name: "Arcade",
     price: "$9/mo",
-    yearlyPrice: " 2 months free",
+    yearlyPrice: "$90/yr",
+    yearlyPriceBonus: " 2 months free",
   },
   {
     id: "option2",
     img: "../assets/images/icon-advanced.svg",
     name: "Advanced",
     price: "$12/mo",
-    yearlyPrice: " 2 months free",
+    yearlyPrice: "$120/yr",
+    yearlyPriceBonus: " 2 months free",
   },
   {
     id: "option3",
     img: "../assets/images/icon-pro.svg",
     name: "Pro",
     price: "$15/mo",
-    yearlyPrice: " 2 months free",
+    yearlyPrice: "$150/yr",
+    yearlyPriceBonus: " 2 months free",
   },
 ];
 </script>

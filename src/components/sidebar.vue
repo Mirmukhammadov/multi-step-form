@@ -9,7 +9,7 @@
             class="w-[33px] h-[33px] text-center py-1.5 text-white text-sm font-bold uppercase tracking-wide rounded-full border border-white duration-300"
             :class="{
               'bg-sky-200': item.id == id,
-              'text-black': item.id == id,
+              'text-[black]': item.id == id,
             }"
             >{{ item.id }}</span
           >

@@ -12,6 +12,7 @@
           class="input"
           :class="{ error: v$.name.$error }"
           type="text"
+          required
           placeholder="e.g. Stephen King"
           v-model="state.name"
         />
@@ -30,6 +31,7 @@
         >
         <input
           class="input"
+          required
           :class="{ error: v$.email.$error }"
           type="email"
           placeholder="e.g. stephenking@lorem.com"
@@ -50,6 +52,7 @@
         >
         <input
           class="input"
+          required
           :class="{ error: v$.number.$error }"
           type="number"
           placeholder="e.g. +1 234 567 890"
@@ -99,7 +102,7 @@
 
 <script setup>
 import Hero from "./Hero.vue";
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
 const title = {
@@ -111,7 +114,7 @@ const state = ref({
   email: "",
   number: "",
 });
-
+const formErrors = ref();
 const rules = {
   name: { required },
   email: { required, email },
@@ -122,5 +125,8 @@ const v$ = useVuelidate(rules, state);
 
 function get() {
   v$.value.$validate();
+  formErrors.value = v$.value.$errors;
 }
+
+// const emit = defineEmits(["formErrors"]);
 </script>

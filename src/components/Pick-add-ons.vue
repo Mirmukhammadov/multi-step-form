@@ -14,6 +14,7 @@
         :for="item.id"
         class="max-w-[450px] w-full h-20 p-5 flex rounded-lg border"
         :class="{ label: item.boolean.value }"
+        @click="$emit('pickcheckbox', item)"
       >
         <span
           class="w-5 h-5 bg-[#483EEF] rounded flex justify-center items-center mt-2 border border-gray"
@@ -33,8 +34,14 @@
           </p>
         </div>
         <span
+          v-if="!props.planButton"
           class="text-right text-indigo-600 text-sm font-normal leading-tight ml-auto mr-3 mt-2"
           >{{ item.price }}</span
+        >
+        <span
+          v-if="props.planButton"
+          class="text-right text-indigo-600 text-sm font-normal leading-tight ml-auto mr-3 mt-2"
+          >{{ item.yearlyPrice }}</span
         >
       </label>
     </div>
@@ -50,18 +57,21 @@
 </style>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 import hero from "./Hero.vue";
 const title = {
   titleHeading: "Pick add-ons",
   titleParagraph: "Add-ons help enhance your gaming experience.",
 };
+
+const props = defineProps(["planButton"]);
 const pickValues = [
   {
     id: "option1",
     name: "Online service",
     paragraph: "Access to multiplayer games",
     price: "+$1/mo",
+    yearlyPrice: "+$10/yr",
     boolean: ref(false),
   },
   {
@@ -69,6 +79,7 @@ const pickValues = [
     name: "Larger storage",
     paragraph: "Extra 1TB of cloud save",
     price: "+$2/mo",
+    yearlyPrice: "+$20/yr",
     boolean: ref(false),
   },
   {
@@ -76,6 +87,7 @@ const pickValues = [
     name: "Customizable profile",
     paragraph: "Custom theme on your profile",
     price: "+$2/mo",
+    yearlyPrice: "+$20/yr",
     boolean: ref(false),
   },
 ];
