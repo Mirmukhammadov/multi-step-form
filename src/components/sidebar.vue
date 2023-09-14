@@ -6,10 +6,11 @@
       <div v-for="item in sidebarValue" :key="item">
         <div class="mt-8 px-7 flex">
           <span
-            class="w-[33px] h-[33px] text-center py-1.5 text-white text-sm font-bold uppercase tracking-wide rounded-full border border-white duration-300"
+            class="w-[33px] h-[33px] text-center py-1.5 text-sm font-bold uppercase tracking-wide rounded-full border border-white duration-300"
             :class="{
               'bg-sky-200': item.id == id,
               'text-[#000]': item.id == id,
+              'text-white': item.id != id,
             }"
             >{{ item.id }}</span
           >
