@@ -20,14 +20,14 @@
             v-if="!props.planButton"
             class="text-right text-sky-950 text-base font-bold font-['Ubuntu'] leading-tight"
           >
-            {{ props.planLabelValue.price }}
+            ${{ props.planLabelValue.price }}/mo
           </p>
 
           <p
             v-if="props.planButton"
             class="text-right text-sky-950 text-base font-bold font-['Ubuntu'] leading-tight"
           >
-            {{ props.planLabelValue.yearlyPrice }}
+            ${{ props.planLabelValue.yearlyPrice }}/yr
           </p>
         </div>
         <span class="block w-full h-px opacity-20 bg-gray-400 mb-5"></span>
@@ -45,13 +45,13 @@
             v-if="!props.planButton"
             class="text-right text-sky-950 text-sm font-normal font-['Ubuntu'] leading-tight"
           >
-            {{ obj.price }}
+            +${{ obj.price }}/mo
           </p>
           <p
             v-if="props.planButton"
             class="text-right text-sky-950 text-sm font-normal font-['Ubuntu'] leading-tight"
           >
-            {{ obj.yearlyPrice }}
+            +${{ obj.yearlyPrice }}/yr
           </p>
         </div>
       </div>
@@ -59,12 +59,20 @@
         <p
           class="text-gray-400 text-sm font-normal font-['Ubuntu'] leading-tight"
         >
-          Total (per month)
+          Total
         </p>
         <p
+          v-if="!props.planButton"
           class="text-right text-indigo-600 text-xl font-bold font-['Ubuntu'] leading-tight"
         >
-          +$12/mo
+          ${{ getTotal }}/mo
+        </p>
+
+        <p
+          v-if="props.planButton"
+          class="text-right text-indigo-600 text-xl font-bold font-['Ubuntu'] leading-tight"
+        >
+          ${{ getTotal }}/yr
         </p>
       </div>
     </div>
@@ -75,13 +83,30 @@
 import { ref, defineProps } from "vue";
 
 import Hero from "./Hero.vue";
-
+let getTotal = ref(0);
 const title = {
   titleHeading: "Finishing up",
   titleParagraph: "Double-check everything looks OK before confirming.",
 };
 
 const props = defineProps(["planLabelValue", "pickLabelValue", "planButton"]);
+const price = ref(0);
+const numericValue = ref();
+if (!props.planButton) {
+  getTotal.value = props.planLabelValue.price;
+
+  for (const i in props.pickLabelValue) {
+    getTotal.value += props.pickLabelValue[i].price;
+  }
+}
+
+if (props.planButton) {
+  getTotal.value = props.planLabelValue.yearlyPrice;
+
+  for (const i in props.pickLabelValue) {
+    getTotal.value += props.pickLabelValue[i].yearlyPrice;
+  }
+}
 </script>
 
 <style scoped></style>

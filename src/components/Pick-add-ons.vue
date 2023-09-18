@@ -36,12 +36,12 @@
         <span
           v-if="!props.planButton"
           class="text-right text-indigo-600 text-sm font-normal leading-tight ml-auto mr-3 mt-2"
-          >{{ item.price }}</span
+          >+${{ item.price }}/mo</span
         >
         <span
           v-if="props.planButton"
           class="text-right text-indigo-600 text-sm font-normal leading-tight ml-auto mr-3 mt-2"
-          >{{ item.yearlyPrice }}</span
+          >+${{ item.yearlyPrice }}/yr</span
         >
       </label>
     </div>
@@ -70,24 +70,24 @@ const pickValues = [
     id: "option1",
     name: "Online service",
     paragraph: "Access to multiplayer games",
-    price: "+$1/mo",
-    yearlyPrice: "+$10/yr",
+    price: 1,
+    yearlyPrice: 10,
     boolean: ref(false),
   },
   {
     id: "option2",
     name: "Larger storage",
     paragraph: "Extra 1TB of cloud save",
-    price: "+$2/mo",
-    yearlyPrice: "+$20/yr",
+    price: 2,
+    yearlyPrice: 20,
     boolean: ref(false),
   },
   {
     id: "option3",
     name: "Customizable profile",
     paragraph: "Custom theme on your profile",
-    price: "+$2/mo",
-    yearlyPrice: "+$20/yr",
+    price: 2,
+    yearlyPrice: 20,
     boolean: ref(false),
   },
 ];

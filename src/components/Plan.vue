@@ -29,12 +29,12 @@
               <span
                 class="text-gray-400 text-sm font-normal"
                 v-if="!buttonBoolean"
-                >{{ item.price }}</span
+                >+${{ item.price }}/mo</span
               >
               <span
                 class="text-gray-400 text-sm font-normal"
                 v-if="buttonBoolean"
-                >{{ item.yearlyPrice }}</span
+                >+${{ item.yearlyPrice }}/yr</span
               >
               <p class="text-sky-950 text-xs font-normal" v-if="buttonBoolean">
                 {{ item.yearlyPriceBonus }}
@@ -98,24 +98,24 @@ const Plan = [
     id: "option1",
     img: "../assets/images/icon-arcade.svg",
     name: "Arcade",
-    price: "$9/mo",
-    yearlyPrice: "$90/yr",
+    price: 9,
+    yearlyPrice: 90,
     yearlyPriceBonus: " 2 months free",
   },
   {
     id: "option2",
     img: "../assets/images/icon-advanced.svg",
     name: "Advanced",
-    price: "$12/mo",
-    yearlyPrice: "$120/yr",
+    price: 12,
+    yearlyPrice: 120,
     yearlyPriceBonus: " 2 months free",
   },
   {
     id: "option3",
     img: "../assets/images/icon-pro.svg",
     name: "Pro",
-    price: "$15/mo",
-    yearlyPrice: "$150/yr",
+    price: 15,
+    yearlyPrice: 150,
     yearlyPriceBonus: " 2 months free",
   },
 ];

@@ -65,8 +65,6 @@
         >
       </div>
     </div>
-
-    <button @click="get">okk</button>
   </div>
 </template>
 
@@ -127,6 +125,4 @@ function get() {
   v$.value.$validate();
   formErrors.value = v$.value.$errors;
 }
-
-// const emit = defineEmits(["formErrors"]);
 </script>

@@ -1,8 +1,8 @@
 <template>
-  <div
-    class="flex flex-col bg-white sm:bg-inherit p-5 rounded-[10px] shadow sm:p-0 sm:rounded-none sm:shadow-inherit"
-  >
-    <div class="flex flex-col justify-center items-center max-w-[400px] w-full">
+  <div class="flex justify-center items-center h-[400px]">
+    <div
+      class="flex flex-col justify-center items-center bg-white sm:bg-inherit p-5 rounded-[10px] shadow sm:p-0 sm:rounded-none sm:shadow-inherit max-w-[450px] w-full lg:ml-[50px] md:ml-[30px] ml-[10px]"
+    >
       <div>
         <img src="../assets/images/icon-thank-you.svg" alt="" />
       </div>
@@ -20,3 +20,5 @@
     </div>
   </div>
 </template>
+
+<style scoped></style>
