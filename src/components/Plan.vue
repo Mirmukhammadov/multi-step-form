@@ -17,7 +17,7 @@
           <label
             @click="$emit('getLabelValue', item)"
             :for="item.id"
-            class="w-[90%] h-auto bg-white rounded-lg border border-gray-300 p-4 flex flex-row gap-5 my-2 items-center sm:m-1 sm:gap-3 sm:h-40 sm:w-[138px] sm:flex-col sm:justify-between sm:items-start"
+            class="w-[90%] h-auto bg-white rounded-lg border border-gray-300 p-4 flex flex-row gap-5 my-2 items-center cursor-pointer sm:m-1 sm:gap-3 sm:h-40 sm:w-[138px] sm:flex-col sm:justify-between sm:items-start"
           >
             <img
               src="../assets/images/icon-arcade.svg"

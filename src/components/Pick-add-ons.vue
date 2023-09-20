@@ -12,7 +12,7 @@
       />
       <label
         :for="item.id"
-        class="max-w-[450px] w-full h-20 p-5 flex rounded-lg border"
+        class="max-w-[450px] w-full h-20 p-5 flex rounded-lg border cursor-pointer"
         :class="{ label: item.boolean.value }"
         @click="$emit('pickcheckbox', item)"
       >

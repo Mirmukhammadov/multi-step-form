@@ -64,6 +64,13 @@
           >This field is required</span
         >
       </div>
+
+      <button
+        @click="get"
+        class="bg-sky-950 rounded-lg text-white text-base font-normal px-1 py-0.5 ml-auto mr-0"
+      >
+        Check form value
+      </button>
     </div>
   </div>
 </template>
